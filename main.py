@@ -1,4 +1,4 @@
-# LAST UPDATED 26/08/2025 6:10 PM
+# LAST UPDATED 26/08/2025 8:45 PM
 
 import random
 import os
@@ -6,6 +6,58 @@ import time
 
 cash = 500
 ring = 1
+
+def gamble(bet):
+
+    global cash
+
+    x = bet // 2
+    os.system("cls")
+    print(f"You have ${x} to gamble.")
+    while x > 0:
+        print("Choose your gamble:\n")
+        print("1 - 50/50 gamble (win = 2x your money)")
+        print("2 - 25 percent gamble (win = 4x your money)")
+        print("3 - Cash out and keep your winnings!\n")
+
+        choice = input("Enter '1', '2', or '3': ")
+
+        if choice == "1":
+            guess = input("Pick 1 or 2: ")
+            outcome = str(random.randint(1,2))
+            if guess == outcome:
+                x *= 2
+                print(f"You won! Your gambling money is now ${x}")
+                time.sleep(2)
+                os.system("cls")
+            else:
+                print("You lost your gambling money!")
+                time.sleep(2)
+                os.system("cls")
+                x = 0
+        elif choice == "2":
+            guess = input("Pick a number between 1 and 4: ")
+            outcome = str(random.randint(1,4))
+            if guess == outcome:
+                x *= 4
+                print(f"You won! Your gambling money is now ${x}")
+                time.sleep(2)
+                os.system("cls")
+            else:
+                print("You lost your gambling money!")
+                time.sleep(2)
+                os.system("cls")
+                x = 0
+        elif choice == "3":
+            print(f"You cashed out with ${x}")
+            time.sleep(2)
+            os.system("cls")
+            cash = cash + x
+            return slot()
+        else:
+            print("Invalid Choice.")
+            time.sleep(2)
+            os.system("cls")
 
 def broke():
 
@@ -16,7 +68,7 @@ def broke():
         os.system("cls")
         print("You get home late from the casino, having lost all your money.")
         time.sleep(2)
-        print("Without a second of hesitation you take your grandmother's engagement ring to the casino and pawn it for $450.")
+        print("Without a second of hesitation you take your grandmother's engagement ring and pawn it for $450.")
         time.sleep(3)
         print("You head straight back to the casino.")
         time.sleep(2)
@@ -28,14 +80,13 @@ def broke():
         time.sleep(3)
         menu()
         
-
 def menu():
     
     if cash <1:
         broke()
     
     os.system("cls")
-    print("Welcome to the casino! | v0.1.1")
+    print("Welcome to the casino! | v0.1.2")
     print("by: ROLERKUPS\n")
     print("1. Slots\n")
     select = int(input("Please select the game you'd like to play! "))
@@ -49,11 +100,14 @@ def menu():
 def slotrules():
     
     os.system("cls")
-    print("MULTIPLIERS:\n")
+    print("JACKPOT NUMBERS: 3 7\n")
     print("Two Sevens = 5x Multiplier")
     print("Two Threes = 3x Multiplier")
     print("Three Sevens = 5x Multiplier, with every dollar you bet adding 0.1 to the multiplier each")
     print("Three Threes = 3x Multiplier, with every dollar you bet adding 0.05 to the multiplier each\n")
+    print("LUCKY NUMBERS: 1 5 9\n")
+    print("If you get two or more numbers in the same spin, you get the option to gamble your money.")
+    print("You can either take a 50 percent bet which doubles your money, or a 25 percent bet which quadruples your money.\n")
     input("PRESS ENTER TO CONTINUE:")
     slot()
 
@@ -74,7 +128,8 @@ def slot():
         slot3 = random.randint(1, 9)
     
         os.system("cls")
-     
+
+        print(f"${cash}")
         bet = input("ENTER YOUR BET AMOUNT: ")
         if bet == "menu":
             os.system("cls")
@@ -131,6 +186,10 @@ def slot():
             time.sleep(2)
             os.system("cls")
             continue
+        elif (slot1 == slot2 or slot2== slot3 or slot1 == slot3) and (slot1 in [1,5,9] or slot2 in [1,5,9] or slot3 in [1,5,9]):
+            print("You matched two lucky numbers! Time to gamble!")
+            time.sleep(2)
+            gamble(bet)
         else:
             print(f"You Lost: ${bet}\n")
             time.sleep(2)
