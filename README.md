@@ -4,6 +4,12 @@ project game, very early release barely functional slots game is the only featur
 
 play once you have lost all your irl money
 
+v0.2.0
+
+- Added roulette feature
+
+- Organised code
+
 v0.1.3
 
 - Expanded extra life feature (now 2 lives, with death feature)
