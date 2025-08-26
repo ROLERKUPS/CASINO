@@ -4,6 +4,12 @@ project game, very early release barely functional slots game is the only featur
 
 play once you have lost all your irl money
 
+v0.1.3
+
+- Expanded extra life feature (now 2 lives, with death feature)
+
+- Fixed winnings calculation (when displaying the amount you won from a bet, it would display the wrong amount)
+
 v0.1.2
 
 - Added cash display above bet input
