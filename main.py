@@ -1,4 +1,4 @@
-# LAST UPDATED 26/08/2025 9:21 PM
+# LAST UPDATED 27/08/2025 12:14 AM
 
 import random
 import os
@@ -7,6 +7,66 @@ import time
 cash = 500
 ring = True
 loan = True
+
+def menu():
+    
+    if cash <1:
+        broke()
+    
+    os.system("cls")
+    print("Welcome to the casino! | v0.2.0")
+    print("by: ROLERKUPS\n")
+    print("1 - Slots\n")
+    print("2 - Roulette\n")
+    select = int(input("Please select the game you'd like to play! "))
+    if select == 1:
+        slotrules()
+    elif select == 2:
+        rouletterules()
+    else:
+        print("Invalid Option")
+        time.sleep(2)
+        menu()
+
+def broke():
+
+    global ring
+    global cash
+    global loan
+
+    if ring == True:
+        os.system("cls")
+        print("You get home late from the casino, having lost all your money.")
+        time.sleep(2)
+        print("Without a second of hesitation you take your grandmother's engagement ring and pawn it for $450.")
+        time.sleep(3)
+        print("You head straight back to the casino.")
+        time.sleep(2)
+        ring = False
+        cash = 450
+        menu()
+    elif loan == True:
+        os.system("cls")
+        print("With nowhere left to turn, you set up a meet with one of the city's cruelest loan sharks.")
+        time.sleep(3)
+        print("The man agrees to give you $500, with the agreement you'll pay him back $1000 in five days.")
+        time.sleep(3)
+        print("You head straight back to the casino.")
+        time.sleep(3)
+        loan = False
+        cash = 500
+        menu()
+    else:
+        os.system("cls")
+        print("You walk yourself home from the casino, late at night, pockets empty, and the smell of alcohol repulsing those around you.")
+        time.sleep(3)
+        print("You turn the corner to find the loan shark waiting for you, with a few of his goons. You won't be getting out of this one.")
+        time.sleep(3)
+        print("Everything goes dark.")
+        time.sleep(3)
+        os.system("cls")
+        time.sleep(999999)
+        menu()
 
 def gamble(bet):
 
@@ -60,63 +120,6 @@ def gamble(bet):
             time.sleep(2)
             os.system("cls")
 
-def broke():
-
-    global ring
-    global cash
-    global loan
-
-    if ring == True:
-        os.system("cls")
-        print("You get home late from the casino, having lost all your money.")
-        time.sleep(2)
-        print("Without a second of hesitation you take your grandmother's engagement ring and pawn it for $450.")
-        time.sleep(3)
-        print("You head straight back to the casino.")
-        time.sleep(2)
-        ring = False
-        cash = 450
-        slot()
-    elif loan == True:
-        os.system("cls")
-        print("With nowhere left to turn, you set up a meet with one of the city's cruelest loan sharks.")
-        time.sleep(3)
-        print("The man agrees to give you $500, with the agreement you'll pay him back $1000 in five days.")
-        time.sleep(3)
-        print("You head straight back to the casino.")
-        time.sleep(3)
-        loan = False
-        cash = 500
-        slot()
-    else:
-        os.system("cls")
-        print("You walk yourself home from the casino, late at night, pockets empty, and the smell of alcohol repulsing those around you.")
-        time.sleep(3)
-        print("You turn the corner to find the loan shark waiting for you, with a few of his goons. You won't be getting out of this one.")
-        time.sleep(3)
-        print("Everything goes dark.")
-        time.sleep(3)
-        os.system("cls")
-        time.sleep(999999)
-        menu()
-        
-def menu():
-    
-    if cash <1:
-        broke()
-    
-    os.system("cls")
-    print("Welcome to the casino! | v0.1.3")
-    print("by: ROLERKUPS\n")
-    print("1. Slots\n")
-    select = int(input("Please select the game you'd like to play! "))
-    if select == 1:
-        slotrules()
-    else:
-        print("Invalid Option")
-        time.sleep(2)
-        menu()
-
 def slotrules():
     
     os.system("cls")
@@ -140,7 +143,7 @@ def slot():
         if cash < 1:
             print("you broke ass mothafucka get the fuck out")
             time.sleep(3)
-            menu()
+            broke()
             return
     
         slot1 = random.randint(1, 9)
@@ -217,5 +220,136 @@ def slot():
             time.sleep(2)
             os.system("cls")
             continue
+
+def rouletterules():
+
+    os.system("cls")
+    print("ROULETTE RULES:\n")
+    print("There are two types of bets you can make: Colours and Numbers\n")
+    print("1 - Colours - Choose whether the wheel will land on black or red, win for a 2X return on your bet.")
+    print("2 - Numbers - Pick a number between 1-36, if you pick the correct number you get a 35X return on your bet.\n")
+    input("PRESS ENTER TO CONTINUE: ")
+    roulette()
+
+def roulette():
+
+    global cash
+
+    while True:
+        if cash < 1:
+            broke()
+            return
+        
+        value = random.randint(1,2)
+        value2 = random.randint(1,36)
+
+        os.system("cls")
+        print("Please select how you would like to gamble today:")
+        print(f"CASH: ${cash}\n")
+        print("1 - Colours")
+        print("2 - Numbers\n")
+        
+        try:
+            choice = int(input("ENTER '1' OR '2': "))
+            if choice not in [1, 2]:
+                print("Invalid choice! Must be 1 (Colours) or 2 (Numbers).")
+                time.sleep(2)
+                continue
+        except ValueError:
+            print("Invalid input! Please enter 1 or 2.")
+            time.sleep(2)
+            continue
+        
+        if choice == 1:
+            os.system("cls")
+            try:
+                bet = int(input("ENTER YOUR BET AMOUNT: "))
+            except ValueError:
+                print("Invalid input! Bet must be a number.")
+                time.sleep(2)
+                continue
+            
+            if bet > cash:
+                print("You don't have enough money.")
+                time.sleep(2)
+                continue
+
+            os.system("cls")
+            try:
+                y = int(input("TYPE '1' TO BET ON BLACK, TYPE '2' TO BET ON RED: "))
+                if y not in [1, 2]:
+                    print("Invalid choice! Must be 1 (Black) or 2 (Red)")
+                    time.sleep(2)
+                    continue
+            except ValueError:
+                print("Invalid input! Must be 1 or 2.")
+                time.sleep(2)
+                continue
+
+            cash -= bet
+
+            landed = "Black" if value == 1 else "Red"
+            chosen = "Black" if y == 1 else "Red"
+            print(f"It landed on {landed}!\nYou picked {chosen}!\n")
+
+            if value == y:
+                winnings = bet * 2
+                cash += winnings
+                print(f"You Won: ${winnings}")
+                print(f"CASH: ${cash}")
+                time.sleep(5)
+            else:
+                print(f"You lost: ${bet}")
+                print(f"CASH: ${cash}")
+                time.sleep(5)
+
+        elif choice == 2:
+            os.system("cls")
+            try:
+                bet = int(input("PLACE YOUR BET AMOUNT: "))
+            except ValueError:
+                print("Invalid input! Bet must be a number.")
+                time.sleep(2)
+                continue
+
+            if bet > cash:
+                print("You don't have enough money.")
+                time.sleep(2)
+                continue
+
+            if bet <= 0:
+                print("Bet must be greater than 0.")
+                time.sleep(2)
+                continue
+
+            try:
+                y2 = int(input("CHOOSE A NUMBER BETWEEN 1-36 TO BET ON: "))
+                if y2 < 1 or y2 > 36:
+                    print("Invalid choice! Must be between 1 and 36")
+                    time.sleep(2)
+                    continue
+            except ValueError:
+                print("Invalid input! Must be a number between 1-36")
+                time.sleep(2)
+                continue
+
+            cash -= bet
+
+            if value2 == y2:
+                winnings = bet * 35
+                cash += winnings
+                os.system("cls")
+                print(f"It landed on {value2}!\n")
+                print(f"You picked {y2}!\n")
+                print(f"You won: ${winnings}")
+                time.sleep(4)
+                continue
+            else:
+                os.system("cls")
+                print(f"It landed on {value2}!\n")
+                print(f"You picked {y2}!\n")
+                print(f"You lost: ${bet}")
+                time.sleep(4)
+                continue
 os.system("title CASINO")
 menu()
