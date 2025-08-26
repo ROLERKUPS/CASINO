@@ -1,11 +1,12 @@
-# LAST UPDATED 26/08/2025 8:45 PM
+# LAST UPDATED 26/08/2025 9:21 PM
 
 import random
 import os
 import time
 
 cash = 500
-ring = 1
+ring = True
+loan = True
 
 def gamble(bet):
 
@@ -63,8 +64,9 @@ def broke():
 
     global ring
     global cash
+    global loan
 
-    if ring == 1:
+    if ring == True:
         os.system("cls")
         print("You get home late from the casino, having lost all your money.")
         time.sleep(2)
@@ -72,12 +74,30 @@ def broke():
         time.sleep(3)
         print("You head straight back to the casino.")
         time.sleep(2)
-        ring = 0
+        ring = False
         cash = 450
         slot()
-    else:
-        print("bro just give up at this point you lose")
+    elif loan == True:
+        os.system("cls")
+        print("With nowhere left to turn, you set up a meet with one of the city's cruelest loan sharks.")
         time.sleep(3)
+        print("The man agrees to give you $500, with the agreement you'll pay him back $1000 in five days.")
+        time.sleep(3)
+        print("You head straight back to the casino.")
+        time.sleep(3)
+        loan = False
+        cash = 500
+        slot()
+    else:
+        os.system("cls")
+        print("You walk yourself home from the casino, late at night, pockets empty, and the smell of alcohol repulsing those around you.")
+        time.sleep(3)
+        print("You turn the corner to find the loan shark waiting for you, with a few of his goons. You won't be getting out of this one.")
+        time.sleep(3)
+        print("Everything goes dark.")
+        time.sleep(3)
+        os.system("cls")
+        time.sleep(999999)
         menu()
         
 def menu():
@@ -86,7 +106,7 @@ def menu():
         broke()
     
     os.system("cls")
-    print("Welcome to the casino! | v0.1.2")
+    print("Welcome to the casino! | v0.1.3")
     print("by: ROLERKUPS\n")
     print("1. Slots\n")
     select = int(input("Please select the game you'd like to play! "))
@@ -151,37 +171,39 @@ def slot():
         cash -= int(bet)
         multiplier = 5 + (int(bet)/10)
         multiplier2 = 3 + (int(bet)/20)
-
-        winnings = int(bet) * multiplier
     
         os.system("cls")
         print(f"${cash}\n")
         print(slot1,slot2,slot3,"\n")
 
         if slot1 == 7 and slot2 == 7 and slot3 == 7:
+            winnings = int(bet) * multiplier
             print(f"You Won: ${winnings}\n")
-            cash = cash + int(bet) * multiplier
+            cash = cash + winnings
             print("cash: " ,cash)
             time.sleep(2)
             os.system("cls")
             continue
         elif slot1 == 7 and slot2 == 7 or slot1 == 7 and slot3 == 7 or slot2 == 7 and slot3== 7:
+            winnings = int(bet) * 5
             print(f"You Won: ${winnings}\n")
-            cash = cash + int(bet) * 5
+            cash = cash + winnings
             print("cash: " ,cash)
             time.sleep(2)
             os.system("cls")
             continue
         elif slot1 == 3 and slot2 == 3 and slot3 == 3:
+            winnings = int(bet) * multiplier2
             print(f"You Won: ${winnings}\n")
-            cash = cash + int(bet) * multiplier2
+            cash = cash + winnings
             print("cash: " ,cash)
             time.sleep(2)
             os.system("cls")
             continue
         elif slot1 == 3 and slot2 == 3 or slot1 == 3 and slot3 == 3 or slot2 == 3 and slot3== 3:
+            winnings = int(bet) * 3
             print(f"You Won: ${winnings}\n")
-            cash = cash + int(bet) * 5
+            cash = cash + winnings
             print("cash: " ,cash)
             time.sleep(2)
             os.system("cls")
@@ -195,4 +217,5 @@ def slot():
             time.sleep(2)
             os.system("cls")
             continue
+os.system("title CASINO")
 menu()
