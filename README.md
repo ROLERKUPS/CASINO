@@ -4,6 +4,12 @@ project game, very early release barely functional slots game is the only featur
 
 play once you have lost all your irl money
 
+v0.1.2
+
+- Added cash display above bet input
+
+- Adding gambling function to slots game
+
 v0.1.1
 
 - Fixed slots game (broke when you won)
