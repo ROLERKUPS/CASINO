@@ -6,25 +6,25 @@ play once you have lost all your irl money
 
 **Commit Notes – Casino Game (v0.2.1 updates)**
 
-Added while True loops to ensure input prompts repeat until valid input is entered.
+- Added while True loops to ensure input prompts repeat until valid input is entered.
 
-Fixed all input validation bugs for:
+- Fixed all input validation bugs for:
 
-Betting amounts in slots and roulette.
+    - Betting amounts in slots and roulette.
 
-Choice selection in roulette (colours or numbers).
+    - Choice selection in roulette (colours or numbers).
 
-Colour selection in roulette (Black or Red).
+    - Colour selection in roulette (Black or Red).
 
-Number selection in roulette (1–36).
+    - Number selection in roulette (1–36).
 
-Corrected flow in roulette to prevent skipping steps or invalid outcomes.
+- Corrected flow in roulette to prevent skipping steps or invalid outcomes.
 
-Ensured cash deduction and winnings calculation works correctly for both slots and roulette.
+- Ensured cash deduction and winnings calculation works correctly for both slots and roulette.
 
-Fixed recursion/return issues for menus and rules screens to prevent infinite loops or crashes.
+- Fixed recursion/return issues for menus and rules screens to prevent infinite loops or crashes.
 
-Cleaned up minor display and os.system("cls") issues for clearer output.
+- Cleaned up minor display and os.system("cls") issues for clearer output.
 
 **v0.2.0**
 
