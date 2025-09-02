@@ -18,8 +18,6 @@ Changed / Improved
 
 - Added input validation across all user prompts to prevent crashes from invalid entries.
 
-- All user inputs now use .strip() to ignore accidental spaces.
-
 - String-based inputs are case-insensitive using .lower() where applicable.
 
 - Optimized screen clearing (cls) to prevent overlapping commands; clears only when necessary.
