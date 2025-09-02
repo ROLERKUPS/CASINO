@@ -4,6 +4,34 @@ project game, very early release barely functional slots game is the only featur
 
 play once you have lost all your irl money
 
+**Commit Notes - Casino Game (v0.2.1a updates)**
+
+Fixed
+
+- Slot rules no longer repeatedly display during spins; shown only once per session entry.
+
+- Menu navigation no longer re-triggers slot or roulette rules unnecessarily.
+
+- Corrected slot random number generation and multiplier calculations for accurate outcomes.
+
+Changed / Improved
+
+- Added input validation across all user prompts to prevent crashes from invalid entries.
+
+- All user inputs now use .strip() to ignore accidental spaces.
+
+- String-based inputs are case-insensitive using .lower() where applicable.
+
+- Optimized screen clearing (cls) to prevent overlapping commands; clears only when necessary.
+
+- Standardized time.sleep() durations for consistent pacing throughout the game.
+
+- Cash amount now displays consistently throughout the game for better clarity.
+
+Notes
+
+- Core gameplay mechanics remain unchanged; updates focus on bug fixes, input handling, and UI clarity.
+
 **Commit Notes – Casino Game (v0.2.1 updates)**
 
 - Added while True loops to ensure input prompts repeat until valid input is entered.
