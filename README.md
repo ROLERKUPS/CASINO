@@ -4,6 +4,23 @@ project game, very early release barely functional slots game is the only featur
 
 play once you have lost all your irl money
 
+**Commit Notes - Casino Game (v0.2.2 updates)**
+
+- Loan Shark Event Added
+When the player runs out of money and has already pawned their grandmother's ring, they are forced to take a loan from one of the city's most dangerous loan sharks
+        - Loan details: The player receives $500, but must pay back $1000 in 5 days.
+        - Failure to pay the loan back on time will result in severe consequences, escalating the danger as the story 
+          progresses.
+
+- Tracking Days System Implemented
+A new **day tracking** system has been added to create a sense of urgency and time pressure.
+        - Each day spent gambling is now tracked (each day is 180 seconds), and as the player gets closer to the 5-day 
+          deadline to repay the loan, the pressure increases.
+        - This system ensures a more immersive, high-stakes experience as players race against time to recover their money.
+
+- Increased Stakes & Desperation
+The loan shark system, along with the day tracking feature, raises the stakes and adds layers of urgency, forcing the player to carefully manage their time and decisions to avoid falling deeper into trouble.
+
 **Commit Notes - Casino Game (v0.2.1a updates)**
 
 Fixed
