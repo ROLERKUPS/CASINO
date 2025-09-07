@@ -11,7 +11,7 @@ get_choice function (input validation function)
 - ensures that inputs requiring integer responses are valid, numeric, or allow "menu" to return.
 - cleans up code, allowing for removal of some while true loops and try/except blocks (hasn't been implemented through entire code as i am lazy and cbf rn)
 
-- removed core game functions and turned them into classes (Player, Loanshark, GameDayTracker, CasinoGame)
+removed core game functions and turned them into classes (Player, Loanshark, GameDayTracker, CasinoGame)
 
 - reduced size of code a lot, made it easier to store and access information.
 - loan shark logic is in its own class, interacts cleanly with Player
