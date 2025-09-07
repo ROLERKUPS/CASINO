@@ -5,14 +5,14 @@ project game, very early release barely functional slots game is the only featur
 play once you have lost all your irl money
 
 **Commit Notes - Casino Game (v0.2.3 updates)**
-
-- get_choice function (input validation function)
-
+-
+get_choice function (input validation function)
+-
 - ensures that inputs requiring integer responses are valid, numeric, or allow "menu" to return.
 - cleans up code, allowing for removal of some while true loops and try/except blocks (hasn't been implemented through entire code as i am lazy and cbf rn)
-
+-
 - core game functions are now classes (Player, Loanshark, GameDayTracker, CasinoGame)
-
+-
 - reduced size of code a lot, made it easier to store and access information.
 - loan shark logic is in its own class, interacts cleanly with Player
 - day tracking is in its own GameDayTracker
